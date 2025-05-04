@@ -1,0 +1,60 @@
+{% load static %}
+<html>
+<head>
+<title>Skin Disease Detection</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+ <script LANGUAGE="Javascript" >
+function validate(){
+	var x=document.forms["f1"]["t1"].value;
+	if(x == null || x==""){
+		window.alert("Image must be upload");
+		document.f1.t1.focus();
+		return false;
+	}
+	return true;
+}
+	</script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="logo">
+			<center><font size="4" color="yellow">Skin Disease Detection & Classification using CNN</font></center>
+		</div>
+		<div id="slogan">
+		</div>
+	</div>
+	<div id="menu">
+		<ul><center>
+	  <li><a href="{% url 'runCNN' %}">Train CNN Algorithm</a></li>
+	   <li><a href="{% url 'DiseasePrediction' %}">Disease Detection & Classification</a></li>
+	   <li><a href="{% url 'index' %}">Logout</a></li>		
+		</center></ul>
+<br class="clearfix" />
+				</div>	
+	<div id="splash">
+		<img class="pic" src="{% static 'images/newinvestor.jpg' %}" width="870" height="230" alt="" />
+	</div>	
+			<center>
+<form name="f1" method="post" action={% url 'DiseasePredictionAction' %} enctype="multipart/form-data" OnSubmit="return validate()">
+	{% csrf_token %}<br/>
+   <h3><b>Disease Prediction Screen from Image</b></h3>
+   
+	<font size="" color="black"><center>{{ data }}</center></font>
+						
+						<table align="center" width="80" >
+			 <tr><td><font size="" color="black">Browse&nbsp;Image</b></td><td><input type="file" name="t1" style="font-family: Comic Sans MS" size="30"/></td></tr>
+         
+		  
+		 
+			<tr><td></td><td><input type="submit" value="Predict Disease">
+			</td>
+			</table>
+			<br/><br/><br/><br/>
+				</div>	
+					
+				</div>
+				
+	</body>
+</html>

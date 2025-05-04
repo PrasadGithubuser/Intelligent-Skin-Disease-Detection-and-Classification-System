@@ -1,0 +1,4 @@
+install python 3.7.0
+install mysql software given in this code folder and give mysql password as root
+install all packages from requirements.txt file
+then run code
